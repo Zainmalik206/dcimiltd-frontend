@@ -1,14 +1,13 @@
-
+const BASE_URL = "https://dc-imi-ltd-backend.vercel.app";
 
 const apis ={
-     prod:"http://localhost:1726/api/v1/products",
-     auth:"http://localhost:1726/api/v1/users",
-     orders:"http://localhost:1726/api/v1/orders",
-     contact:"http://localhost:1726/api/v1/contact",
-     wishlist:"http://localhost:1726/api/v1/wishlist",
-      reviews:"http://localhost:1726/api/v1/reviews"
-     ///auth : "http://localhost:1726/api/v1/auth"
-  ////   adminOrders: "http://localhost:1726/api/v1/admin/orders",
+     prod:`${BASE_URL}/api/v1/products`,
+     auth:`${BASE_URL}/api/v1/users`,
+     orders:`${BASE_URL}/api/v1/orders`,
+     contact:`${BASE_URL}/api/v1/contact`,
+     wishlist:`${BASE_URL}/api/v1/wishlist`,
+      reviews:`${BASE_URL}/api/v1/reviews`
+    
      
 }
 

@@ -17,20 +17,3 @@ createRoot(document.getElementById("root")).render(
     </GoogleOAuthProvider>
   </StrictMode>
 );
-// import { StrictMode } from "react";
-// import { createRoot } from "react-dom/client";
-// import "./index.css";
-// import { HelmetProvider } from "react-helmet-async";
-// import { Provider } from "react-redux";
-// import store from "./redux/store.js";
-// import ShopNext from "./ShopNext.jsx";
-
-// createRoot(document.getElementById("root")).render(
-//   <StrictMode>
-//     <HelmetProvider>
-//       <Provider store={store}>
-//         <ShopNext />
-//       </Provider>
-//     </HelmetProvider>
-//   </StrictMode>
-// );

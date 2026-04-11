@@ -1,5 +1,5 @@
 // src/api/wishlistAPI.js
-const API = "http://localhost:1726/api/v1/wishlist";
+const API = "https://dc-imi-ltd-backend.vercel.app/api/v1/wishlist";
 
 const getGuestId = () => {
   let id = localStorage.getItem("guest_wishlist_id");

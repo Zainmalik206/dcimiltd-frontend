@@ -1,7 +1,7 @@
 // 
 
 
-const API = "http://localhost:1726/api/v1/reviews";
+const API = "https://dc-imi-ltd-backend.vercel.app/api/v1/reviews";
 
 const getHeaders = () => {
   const token = JSON.parse(localStorage.getItem("auth") || "{}")?.token;
