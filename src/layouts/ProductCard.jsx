@@ -22,24 +22,47 @@ const ProductCard = ({ product }) => {
   const [loading, setLoading] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
+  // --- FIXED EFFECT TO PREVENT INFINITE LOOP ---
   useEffect(() => {
+    let isMounted = true;
+    
+    // Sirf tab request bhejo jab user logged in ho
+    const authData = localStorage.getItem("auth");
+    if (!authData) return; 
+
     (async () => {
       try {
         const res = await wishlistAPI.get();
-        if (res.ok) {
-          setInWishlist(res.wishlist.some((item) => item._id === _id));
+        if (res.ok && isMounted) {
+          // Check if product exists in wishlist array
+          const exists = res.wishlist?.some((item) => 
+            (typeof item === 'string' ? item === _id : item._id === _id)
+          );
+          setInWishlist(!!exists);
         }
       } catch (e) {
         console.error("Wishlist load error:", e);
       }
     })();
+
+    return () => { isMounted = false; };
   }, [_id]);
 
   const toggleWishlist = async (e) => {
     e.stopPropagation();
+    
+    // Login check before toggle
+    const authData = localStorage.getItem("auth");
+    if (!authData) {
+      toast.info("Please login to use wishlist");
+      return;
+    }
+
     if (loading) return;
     setLoading(true);
+    
     const res = inWishlist ? await wishlistAPI.remove(_id) : await wishlistAPI.add(_id);
+    
     if (res.ok) {
       setInWishlist(!inWishlist);
       successToast(inWishlist ? "Removed from wishlist" : "Added to wishlist");
@@ -48,17 +71,13 @@ const ProductCard = ({ product }) => {
   };
 
   const handleAddToCart = (e) => {
-  e.stopPropagation();
-  
-  // Pehle check karo ke user ne stock limit to nahi cross ki (local state check)
-  if (cartQty < stock) {
-    // Sirf dispatch karo, toast ab slice se khud ayega
-    dispatch(addToCart(product));
-  } else {
-    // Sirf stock limit wala toast yahan rehne dein kyunke yeh slice hit nahi karega
-    toast.error(`Stock limit reached`);
-  }
-};
+    e.stopPropagation();
+    if (cartQty < stock) {
+      dispatch(addToCart(product));
+    } else {
+      toast.error(`Stock limit reached`);
+    }
+  };
 
   const mainImage = images[0]?.url || "/placeholder.png";
   const hoverImage = images[1]?.url || mainImage;
@@ -113,7 +132,6 @@ const ProductCard = ({ product }) => {
 
       {/* 2. Content Section */}
       <div className="p-4 md:p-5">
-        {/* Brand Name */}
         <p className="text-[10px] font-black text-blue-500 uppercase tracking-[0.2em] mb-1 opacity-80">
           {brand || "Premium Brand"}
         </p>
@@ -136,7 +154,6 @@ const ProductCard = ({ product }) => {
             </span>
           </div>
 
-          {/* Add to Cart Button with Text */}
           <motion.button
             whileHover={{ y: -2, backgroundColor: "#003399" }}
             whileTap={{ scale: 0.98 }}
