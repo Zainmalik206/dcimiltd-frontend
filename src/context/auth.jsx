@@ -73,7 +73,7 @@ const AuthProvider = ({ children }) => {
   // Google Login Function
   const loginWithGoogle = async (googleToken) => {
     try {
-      const res = await fetch("http://localhost:1726/api/v1/auth/google", {
+      const res = await fetch("https://dc-imi-ltd-backend.vercel.app/api/v1/auth/google", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token: googleToken }),

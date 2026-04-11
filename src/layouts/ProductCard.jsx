@@ -23,23 +23,29 @@ const ProductCard = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
+    let isMounted = true;
     (async () => {
       try {
         const res = await wishlistAPI.get();
-        if (res.ok) {
-          setInWishlist(res.wishlist.some((item) => item._id === _id));
+        if (res.ok && isMounted) {
+          // Check if current product is in the wishlist array
+          const exists = res.wishlist?.some((item) => (item._id === _id || item === _id));
+          setInWishlist(!!exists);
         }
       } catch (e) {
         console.error("Wishlist load error:", e);
       }
     })();
+    return () => { isMounted = false; };
   }, [_id]);
 
   const toggleWishlist = async (e) => {
     e.stopPropagation();
     if (loading) return;
     setLoading(true);
+    
     const res = inWishlist ? await wishlistAPI.remove(_id) : await wishlistAPI.add(_id);
+    
     if (res.ok) {
       setInWishlist(!inWishlist);
       successToast(inWishlist ? "Removed from wishlist" : "Added to wishlist");
@@ -48,17 +54,13 @@ const ProductCard = ({ product }) => {
   };
 
   const handleAddToCart = (e) => {
-  e.stopPropagation();
-  
-  // Pehle check karo ke user ne stock limit to nahi cross ki (local state check)
-  if (cartQty < stock) {
-    // Sirf dispatch karo, toast ab slice se khud ayega
-    dispatch(addToCart(product));
-  } else {
-    // Sirf stock limit wala toast yahan rehne dein kyunke yeh slice hit nahi karega
-    toast.error(`Stock limit reached`);
-  }
-};
+    e.stopPropagation();
+    if (cartQty < stock) {
+      dispatch(addToCart(product));
+    } else {
+      toast.error(`Stock limit reached`);
+    }
+  };
 
   const mainImage = images[0]?.url || "/placeholder.png";
   const hoverImage = images[1]?.url || mainImage;
@@ -70,7 +72,6 @@ const ProductCard = ({ product }) => {
       onMouseLeave={() => setIsHovered(false)}
       className="group relative bg-white rounded-[1.5rem] overflow-hidden transition-all duration-500 hover:shadow-[0_25px_50px_-12px_rgba(0,35,102,0.15)] cursor-pointer border border-slate-100 hover:border-blue-50"
     >
-      {/* 1. Image Container */}
       <div className="relative aspect-[4/5] bg-[#f8faff] overflow-hidden">
         <motion.img
           src={mainImage}
@@ -91,7 +92,6 @@ const ProductCard = ({ product }) => {
           />
         )}
 
-        {/* Wishlist Icon */}
         <button
           onClick={toggleWishlist}
           className={`absolute top-4 right-4 p-2 rounded-full backdrop-blur-md z-10 transition-all duration-300 ${
@@ -101,7 +101,6 @@ const ProductCard = ({ product }) => {
           <Heart size={16} fill={inWishlist ? "currentColor" : "none"} />
         </button>
 
-        {/* Sold Out Overlay */}
         {stock - cartQty <= 0 && (
           <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px] flex items-center justify-center z-20">
             <span className="bg-slate-900 text-white text-[9px] font-black uppercase tracking-[0.3em] px-5 py-2.5 rounded-full shadow-2xl">
@@ -111,9 +110,7 @@ const ProductCard = ({ product }) => {
         )}
       </div>
 
-      {/* 2. Content Section */}
       <div className="p-4 md:p-5">
-        {/* Brand Name */}
         <p className="text-[10px] font-black text-blue-500 uppercase tracking-[0.2em] mb-1 opacity-80">
           {brand || "Premium Brand"}
         </p>
@@ -136,7 +133,6 @@ const ProductCard = ({ product }) => {
             </span>
           </div>
 
-          {/* Add to Cart Button with Text */}
           <motion.button
             whileHover={{ y: -2, backgroundColor: "#003399" }}
             whileTap={{ scale: 0.98 }}

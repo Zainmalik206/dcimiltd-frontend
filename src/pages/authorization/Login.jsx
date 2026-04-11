@@ -152,7 +152,7 @@ const Login = () => {
                   const token = credentialResponse?.credential;
                   if (!token) return errorToast("Google token missing");
                   try {
-                    const res = await fetch("http://localhost:1726/api/v1/auth/google", {
+                    const res = await fetch("https://dc-imi-ltd-backend.vercel.app/api/v1/auth/google", {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({ token }),
