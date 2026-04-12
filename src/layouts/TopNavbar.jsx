@@ -59,7 +59,7 @@ const TopNavbar = ({ setOpen }) => {
           {/* Center: Brand Title */}
           <div className="absolute left-1/2 -translate-x-1/2">
             <h1 className="text-2xl md:text-3xl font-black tracking-tighter leading-none">
-              <span className="text-slate-900 uppercase text-center block md:inline">DC IMI LTD</span>
+              <span className="text-slate-900 uppercase text-center block md:inline">DC LMI LTD</span>
               <span className="text-indigo-600 uppercase text-center block md:inline md:ml-2"> STORE</span>
             </h1>
           </div>

@@ -100,7 +100,7 @@ const UserDashboard = () => {
             transition={{ delay: 1.2 }}
             className="text-white text-sm md:text-base font-medium max-w-xl tracking-tight"
           >
-            Experience the next generation of e-commerce management with <span className="text-indigo-400 text-uppercase font-black">DC IMI LTD Elite</span>. Your personalized data stream is now active.
+            Experience the next generation of e-commerce management with <span className="text-indigo-400 text-uppercase font-black">DC LMI LTD Elite</span>. Your personalized data stream is now active.
           </motion.p>
         </div>
       </motion.div>

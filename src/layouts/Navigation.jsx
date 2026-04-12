@@ -64,7 +64,7 @@ export default function Navigation() {
             </div>
             <div className="relative overflow-hidden">
               <h1 className="text-2xl font-black text-slate-900 tracking-tighter uppercase">
-                DC Imi <span className="text-orange-600">Ltd</span>
+                DC LMI <span className="text-orange-600">LTD</span>
               </h1>
             </div>
           </motion.div>

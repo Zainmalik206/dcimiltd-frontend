@@ -44,7 +44,7 @@ const Contactus = () => {
 
   return (
     <div className="pt-32 bg-[#F9F8F6] text-[#1a1a1a] min-h-screen pb-20 px-6">
-      <MetaData title="Contact — Studio DC IMI LTD" />
+      <MetaData title="Contact — Studio DC LMI LTD" />
 
       <div className="max-w-6xl mx-auto">
         {!successMsg ? (
@@ -72,7 +72,7 @@ const Contactus = () => {
                   </div>
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-widest text-stone-400">Email Us</p>
-                    <p className="text-2xl font-bold">support@dcimiltd.com</p>
+                    <p className="text-2xl font-bold">support@dclmiltd.com</p>
                   </div>
                 </motion.div>
 

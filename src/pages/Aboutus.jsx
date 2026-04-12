@@ -34,7 +34,7 @@ export default function AboutUs() {
 
   return (
     <>
-      <MetaData title="About Studio DC IMI LTD — Interactive Experience" />
+      <MetaData title="About Studio DC LMI LTD — Interactive Experience" />
       
       <section className="min-h-screen bg-[#FDFCFB] text-[#111] pt-32 pb-20 px-6 overflow-hidden">
         
@@ -71,7 +71,7 @@ export default function AboutUs() {
                   className="bg-stone-900 text-white rounded-full w-40 h-40 flex items-center justify-center border border-stone-700 shadow-2xl relative"
                 >
                     <span className="text-[8px] font-black uppercase tracking-[0.4em] absolute text-center">
-                        DC IMI LTD <br/> Studio • 2026
+                        DC LMI LTD <br/> Studio • 2026
                     </span>
                 </motion.div>
             </motion.div>

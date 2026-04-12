@@ -45,7 +45,7 @@ export default function Footer() {
               whileInView={{ opacity: 1 }}
               className="text-3xl font-black text-slate-900 tracking-tighter"
             >
-              𝓓𝓒 𝓘𝓜𝓘 <span className="text-indigo-600">𝓛𝓣𝓓</span>
+              𝓓𝓒 𝓛𝓜𝓘 <span className="text-indigo-600">𝓛𝓣𝓓</span>
             </motion.h2>
             <p className="text-slate-500 text-base leading-relaxed font-medium max-w-sm">
               Elevating your lifestyle with curated collections and seamless technology. 
@@ -150,7 +150,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="text-[10px] font-black uppercase text-slate-400 tracking-tighter">Support</p>
-                  <p className="text-sm font-bold text-slate-900 leading-none">hi@dcimiltd.com</p>
+                  <p className="text-sm font-bold text-slate-900 leading-none">hi@dclmiltd.com</p>
                 </div>
               </div>
            </div>
@@ -159,7 +159,7 @@ export default function Footer() {
         {/* Bottom Copyright */}
         <div className="mt-10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm font-medium text-slate-400">
-            © {currentYear} <span className="text-slate-900 font-bold">DC IMI LTD.</span> All rights reserved.
+            © {currentYear} <span className="text-slate-900 font-bold">DC LMI LTD.</span> All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <a href="#" className="text-[11px] font-black uppercase text-slate-400 hover:text-indigo-600 tracking-widest transition-colors">Privacy</a>

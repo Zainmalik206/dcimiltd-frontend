@@ -131,7 +131,7 @@ const AdminDashboard = () => {
           <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-center md:text-left">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-indigo-100 text-[10px] font-bold uppercase tracking-widest mb-4 border border-white/20">
-                 System Live • DC IMI LTD
+                 System Live • DC LMI LTD
               </div>
               <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-2">Welcome back, Admin!</h1>
               <p className="text-indigo-100/80 text-sm font-medium max-w-md">Real-time business intelligence stream is active and updating.</p>

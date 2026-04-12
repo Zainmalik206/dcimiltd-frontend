@@ -87,7 +87,7 @@ export default function Sidebar({ menuItems = [], open, setOpen, darkMode, pktTi
                   <Zap size={22} className="text-white fill-white" />
                 </div>
                 <h2 className={`text-2xl font-black tracking-tighter ${darkMode ? 'text-white' : 'text-slate-900'}`}>
-                  DC IMI<span className="text-indigo-600 font-medium"> LTD</span>
+                  DC LMI<span className="text-indigo-600 font-medium"> LTD</span>
                 </h2>
               </div>
               
@@ -144,7 +144,7 @@ export default function Sidebar({ menuItems = [], open, setOpen, darkMode, pktTi
                 </div>
               </div>
               <p className="text-[10px] text-center mt-6 font-bold text-slate-400 uppercase tracking-tighter">
-                © {new Date().getFullYear()} <i>DC IMI LTD</i> Terminal
+                © {new Date().getFullYear()} <i>DC LMI LTD</i> Terminal
               </p>
             </div>
           </motion.aside>

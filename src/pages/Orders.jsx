@@ -70,7 +70,7 @@ const Orders = () => {
             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Network: Pakistan North</span>
           </div>
           <div className="hidden sm:block text-[10px] font-black text-slate-400 uppercase tracking-widest">
-            ID IMI LTD <span className="text-indigo-600">v3.0</span>
+            DC LMI LTD
           </div>
         </div>
 

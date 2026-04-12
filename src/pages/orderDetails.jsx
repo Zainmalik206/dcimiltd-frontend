@@ -270,7 +270,7 @@ const OrderDetail = () => {
                <motion.div variants={itemVars} className="bg-indigo-50/40 border border-indigo-100 rounded-[2.5rem] p-8">
                   <div className="flex items-center gap-3 mb-4">
                     <ShieldCheck className="text-indigo-600" size={24} />
-                    <h4 className="text-xs font-black text-indigo-900 uppercase tracking-widest">DC IMI LTD Protect</h4>
+                    <h4 className="text-xs font-black text-indigo-900 uppercase tracking-widest">DC LMI LTD Protect</h4>
                   </div>
                   <p className="text-[11px] text-slate-500 font-medium leading-relaxed">
                     This manifest is cryptographically verified. Any discrepancies in logistics should be reported to the enterprise support desk immediately.
