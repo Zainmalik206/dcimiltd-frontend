@@ -150,7 +150,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="text-[10px] font-black uppercase text-slate-400 tracking-tighter">Support</p>
-                  <p className="text-sm font-bold text-slate-900 leading-none">hi@dclmiltd.com</p>
+                  <p className="text-sm font-bold text-slate-900 leading-none">contact@dclmiltd.co.uk</p>
                 </div>
               </div>
            </div>

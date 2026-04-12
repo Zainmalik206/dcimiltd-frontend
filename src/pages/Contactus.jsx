@@ -72,7 +72,7 @@ const Contactus = () => {
                   </div>
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-widest text-stone-400">Email Us</p>
-                    <p className="text-2xl font-bold">support@dclmiltd.com</p>
+                    <p className="text-2xl font-bold">contact@dclmiltd.co.uk</p>
                   </div>
                 </motion.div>
 
