@@ -40,6 +40,7 @@ export default function Navigation() {
     if (searchTerm.trim()) {
       navigate(`/search?keyword=${encodeURIComponent(searchTerm.trim())}`);
       setSearchTerm("");
+      setMenuOpen(false); // Mobile par search ke baad menu band ho jaye
     }
   };
 
@@ -59,17 +60,19 @@ export default function Navigation() {
             whileHover={{ scale: 1.02 }} 
             className="flex items-center space-x-2 cursor-pointer group"
           >
-            <div className="p-1.5 bg-orange-600 rounded-lg shadow-sm">
-                <ShoppingBag className="text-white" size={22} />
-            </div>
-            <div className="relative overflow-hidden">
-              <h1 className="text-2xl font-black text-slate-900 tracking-tighter uppercase">
-                DC LMI <span className="text-orange-600">LTD</span>
-              </h1>
-            </div>
+            <Link to="/" className="flex items-center space-x-2">
+              <div className="p-1.5 bg-orange-600 rounded-lg shadow-sm">
+                  <ShoppingBag className="text-white" size={22} />
+              </div>
+              <div className="relative overflow-hidden">
+                <h1 className="text-2xl font-black text-slate-900 tracking-tighter uppercase">
+                  DC LMI <span className="text-orange-600">LTD</span>
+                </h1>
+              </div>
+            </Link>
           </motion.div>
 
-          {/* SEARCH BAR (Static - No Animation) */}
+          {/* SEARCH BAR (Desktop) */}
           <form onSubmit={handleSearch} className="hidden md:flex flex-1 mx-8">
             <div className="relative w-full max-w-md mx-auto">
               <input
@@ -82,10 +85,10 @@ export default function Navigation() {
             </div>
           </form>
 
-          {/* RIGHT ICONS (Animated) */}
+          {/* RIGHT ICONS */}
           <div className="flex items-center space-x-5">
             
-            {/* Account Icon - Smooth Rotation */}
+            {/* Account Icon */}
             <div ref={accountRef} className="relative hidden md:block">
               <motion.button
                 whileHover={{ rotate: 15, scale: 1.1 }}
@@ -111,7 +114,7 @@ export default function Navigation() {
               </AnimatePresence>
             </div>
 
-            {/* Wishlist Icon - Soft Pulse */}
+            {/* Wishlist Icon */}
             <Link to="/wishlist" className="hidden md:block">
               <motion.div 
                 whileHover={{ scale: 1.2, color: "#ef4444" }}
@@ -121,7 +124,7 @@ export default function Navigation() {
               </motion.div>
             </Link>
 
-            {/* Cart Icon - Subtle Jump */}
+            {/* Cart Icon */}
             <Link to="/cart" className="relative group">
               <motion.div 
                 whileHover={{ y: -3, scale: 1.05 }}
@@ -136,14 +139,17 @@ export default function Navigation() {
               </motion.div>
             </Link>
 
-            {/* Mobile Menu */}
-            <button className="md:hidden text-slate-800" onClick={() => setMenuOpen(!menuOpen)}>
-              {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            {/* Mobile Menu Toggle Button */}
+            <button 
+              className="md:hidden text-slate-800 p-1" 
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {menuOpen ? <X size={26} /> : <Menu size={26} />}
             </button>
           </div>
         </div>
 
-        {/* NAV LINKS */}
+        {/* DESKTOP NAV LINKS */}
         <nav className="hidden md:flex justify-center space-x-8 py-1">
           {navLinks.map((link) => (
             <Link 
@@ -156,6 +162,63 @@ export default function Navigation() {
             </Link>
           ))}
         </nav>
+
+        {/* MOBILE MENU SECTION (New Implementation) */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="md:hidden overflow-hidden bg-white border-t border-gray-100"
+            >
+              <div className="flex flex-col space-y-4 px-4 py-6">
+                {/* Mobile Search */}
+                <form onSubmit={handleSearch} className="relative w-full">
+                  <input
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Search for products..."
+                    className="w-full rounded-full border border-gray-100 bg-gray-50 py-2 pl-10 pr-4 text-sm outline-none focus:ring-1 focus:ring-orange-200"
+                  />
+                  <Search className="absolute left-3.5 top-2.5 text-gray-400" size={16} />
+                </form>
+
+                {/* Mobile Navigation Links */}
+                <div className="flex flex-col space-y-3">
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="text-sm font-bold text-slate-700 hover:text-orange-600 py-2 border-b border-gray-50 uppercase tracking-wide"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+
+                {/* Mobile Account Links */}
+                <div className="flex items-center space-x-4 pt-2">
+                  <Link 
+                    to="/login" 
+                    onClick={() => setMenuOpen(false)}
+                    className="flex-1 text-center py-2.5 text-sm font-bold text-slate-700 bg-gray-50 rounded-lg"
+                  >
+                    Login
+                  </Link>
+                  <Link 
+                    to="/signup" 
+                    onClick={() => setMenuOpen(false)}
+                    className="flex-1 text-center py-2.5 text-sm font-bold text-white bg-orange-600 rounded-lg shadow-sm"
+                  >
+                    Sign Up
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.header>
   );
