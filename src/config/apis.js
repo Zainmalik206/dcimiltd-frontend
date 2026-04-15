@@ -1,4 +1,4 @@
-const BASE_URL = "https://dc-imi-ltd-backend.vercel.app";
+const BASE_URL = "https://dc-imi-ltd-backend-production.up.railway.app";
 
 const apis ={
      prod:`${BASE_URL}/api/v1/products`,

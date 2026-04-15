@@ -1,5 +1,5 @@
 // src/api/wishlistAPI.js
-const API = "https://dc-imi-ltd-backend.vercel.app/api/v1/wishlist";
+const API = "https://dc-imi-ltd-backend-production.up.railway.app/api/v1/wishlist";
 
 
 const getGuestId = () => {
