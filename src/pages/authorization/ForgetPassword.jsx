@@ -114,7 +114,7 @@ const ForgetPassword = () => {
           </div>
 
           <p className="text-center mt-8 text-gray-400 text-xs tracking-widest uppercase">
-            Secured by DC IMI Ltd Authentication
+            Secured by DC LMI Ltd Authentication
           </p>
         </motion.div>
       </div>
